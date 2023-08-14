@@ -54,7 +54,7 @@ export default function Home() {
           <button onClick={() => { setChat([]) }} className="absolute right-5 top-6 text-sm">Clean Chat</button>
         </div>
 
-        <div className="pb-40">
+        <div className="pb-40 mobile:pb-20">
 
           <div className="h-20">
           </div>
@@ -67,8 +67,8 @@ export default function Home() {
                 className="w-[40%] rounded-full mb-10 -ml-7"
               />
 
-              <h1 className="text-lg">Ola! Sou o ChatBot</h1>
-              <h1 className="text-lg">Me faça uma pergunta</h1>
+              <h1 className="text-lg">Hello, I'm ChatBot,</h1>
+              <h1 className="text-lg">ask me a question...</h1>
             </div>
           }
 

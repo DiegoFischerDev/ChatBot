@@ -13,7 +13,7 @@ export default function NewMsg({ userImg, msgType, msg }) {
 
 
   return (
-    <div className='w-[100%] min-h-[20px] p-3 rounded-md flex mb-3 items-center justify-between'>
+    <div className='w-[100%] min-h-[20px] p-3 rounded-md flex mb-3 items-center'>
 
       <Image
         src={msgType === "user" ? userImg : botImg}
@@ -22,7 +22,7 @@ export default function NewMsg({ userImg, msgType, msg }) {
         width={botImg !== robotThinkingImg || msgType === "user" ? 50 : 80}
       />
 
-      <div className='mobile:text-sm pl-4 w-[80%]'>
+      <div className='mobile:text-sm pl-4 max-w-[80%]'>
         {!Animation ? <span>{msg}</span> : <Typewriter
           onInit={(typewriter) => {
             typewriter.typeString("")
