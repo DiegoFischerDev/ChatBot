@@ -67,7 +67,7 @@ export default function Home() {
                 className="w-[40%] rounded-full mb-10 -ml-7"
               />
 
-              <h1 className="text-lg">Hello, I'm ChatBot,</h1>
+              <h1 className="text-lg">Hello, I am ChatBot,</h1>
               <h1 className="text-lg">ask me a question...</h1>
             </div>
           }
