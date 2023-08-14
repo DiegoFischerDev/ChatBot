@@ -17,7 +17,7 @@ const [botImg, setBotImg] = useState(robotThinkingImg)
       <Image
         src={msgType === "user" ? userImg : botImg}
         alt="Profile Picture"
-        className="w-[70px] h-[70px] tablet:w-[50px] tablet:h-[50px] rounded-full"
+        className="w-[50px] h-[50px] rounded-full"
       />
 
       <div className='ml-4 mobile:text-sm'>
