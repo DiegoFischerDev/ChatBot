@@ -4,6 +4,7 @@ import Image from "next/image";
 import userImg from "../../public/Images/userImg.jpg"
 import NewMsg from "@/Components/NewMsg";
 import { useState } from "react";
+import robotHello from "../../public/Images/robotHello.gif"
 
 export default function Home() {
 
@@ -14,7 +15,7 @@ export default function Home() {
     }
   ]
 
-  const [chat, setChat] = useState(chatMock)
+  const [chat, setChat] = useState([])
   const [msgInput, setMsgInput] = useState("")
 
   function handleSend() {
@@ -35,12 +36,12 @@ export default function Home() {
 
   function handleBotAnswer(newChat) {
 
-      newChat.push({
-        msgType: "bot",
-        msg: "asdasdsa asd asda sdas dasd asaf asdas dasd asd afasds ad asdasd asdas asda dasasdasdsa asd asda sdas dasd asaf asdas dasd asd asd asda sdas dasd asaf asdas dasd asd afasds ad asdasd asdas asda dasasdasdsa asd asda sdas dasd asaf asdas dasd asd afasds ad asdasd asdas asda."
-      })
+    newChat.push({
+      msgType: "bot",
+      msg: "asdasdsa asd asda sdas dasd asaf asdas dasd asd afasds ad asdasd asdas asda dasasdasdsa asd asda sdas dasd asaf asdas dasd asd asd asda sdas dasd asaf asdas dasd asd afasds ad asdasd asdas asda dasasdasdsa asd asda sdas dasd asaf asdas dasd asd afasds ad asdasd asdas asda."
+    })
 
-      setChat(newChat)
+    setChat(newChat)
   }
 
   return (
@@ -50,12 +51,24 @@ export default function Home() {
 
         <div className="w-full rounded-se-2xl flex items-center justify-center rounded-ss-2xl h-16  absolute tablet:fixed left-0 top-0 bg-black text-white tablet:rounded-none">
           <h1 className="text-3xl">ChatBot</h1>
-          <button onClick={() => { setChat(chatMock) }} className="absolute right-5 top-6 text-sm">Clean Chat</button>
+          <button onClick={() => { setChat([]) }} className="absolute right-5 top-6 text-sm">Clean Chat</button>
         </div>
 
         <div className="py-16 pb-28">
 
-          {chat.map((msg, index) => {
+          {!chat[0] &&
+            <div className="flex flex-col items-center justify-center w-full h-[50vh]">
+              <Image
+                src={robotHello}
+                alt="Profile Picture"
+                className="w-[40%] rounded-full mb-20"
+              />
+
+              <h2>Ola! Sou o ChatBot. Me faça uma pergunta.</h2>
+            </div>
+          }
+
+          {chat?.map((msg, index) => {
             return <NewMsg
               key={index}
               userImg={userImg}
