@@ -79,7 +79,7 @@ export default function Home() {
 
         </div>
 
-        <div className="fixed bottom-0 left-0 w-full bg-gray-100 flex p-4 rounded">
+        <div className="absolute tablet:fixed bottom-0 left-0 w-full bg-gray-100 flex p-4 rounded">
           <textarea value={msgInput} onChange={(e) => { setMsgInput(e.target.value) }} className="w-full p-3" />
           <div className="ml-5 h-full flex justify-between flex-col">
             <Image
