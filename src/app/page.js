@@ -56,7 +56,7 @@ export default function Home() {
 
         <div className="pb-40">
 
-          <div className="h-16">
+          <div className="h-20">
           </div>
 
           {!chat[0] &&
