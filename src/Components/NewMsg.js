@@ -9,19 +9,18 @@ import Typewriter from 'typewriter-effect'
 export default function NewMsg({ userImg, msgType, msg }) {
 
 const [Animation, setAnimation] = useState(msgType === "user" ? false : true)
-const [robotThinking, setRobotThinking] = useState(msgType === "user" ? false : true)
 const [botImg, setBotImg] = useState(robotThinkingImg)
 
   return (
-    <div className='w-100% min-h-[20px] bg-slate-100 p-3 rounded-md flex mb-3'>
+    <div className='w-100% min-h-[20px] p-3 rounded-md flex mb-3 items-center'>
 
       <Image
         src={msgType === "user" ? userImg : botImg}
         alt="Profile Picture"
-        className="w-[15vw] max-w-[80px] max-h-[80px] rounded-full"
+        className="w-[70px] h-[70px] tablet:w-[10vw] tablet:h-[10vw] rounded-full"
       />
 
-      <div className='ml-2'>
+      <div className='ml-4 mobile:text-sm'>
         {!Animation ? <span>{msg}</span> : <Typewriter
          onInit={(typewriter) => {
           typewriter.typeString("")
@@ -29,7 +28,6 @@ const [botImg, setBotImg] = useState(robotThinkingImg)
           .pauseFor(4000)
           .start()
           .callFunction(()=>{
-            setRobotThinking(false)
             setBotImg(robotOk)
           })
           typewriter.typeString(msg)
