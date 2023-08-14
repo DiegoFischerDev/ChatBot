@@ -45,7 +45,7 @@ export default function Home() {
   }
 
   return (
-    <section className="bg-[url('../../public/Images/bg.jpg')] bg-cover relative w-full min-h-[100%] flex items-center justify-center">
+    <section className="bg-[url('../../public/Images/bg.jpg')] bg-cover relative w-full min-h-[100vh] mobile:min-h-0 flex items-center justify-center">
 
       <div className="bg-white relative w-[100vw] max-w-[800px] p-5 py-5 rounded-2xl tablet:rounded-none shadow-md min-h-[90vh] tablet:min-h-[100vh] flex flex-col justify-between">
 
