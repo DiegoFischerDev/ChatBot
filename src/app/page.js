@@ -49,22 +49,23 @@ export default function Home() {
 
       <div className="bg-white relative w-[100vw] max-w-[800px] p-5 py-5 rounded-2xl tablet:rounded-none shadow-md min-h-[90vh] tablet:min-h-[100vh] flex flex-col justify-between">
 
-        <div className="w-full rounded-se-2xl flex items-center justify-center rounded-ss-2xl h-16  absolute tablet:fixed left-0 top-0 bg-black text-white tablet:rounded-none">
+        <div className="w-full rounded-se-2xl flex items-center justify-center tablet:justify-start px-5 rounded-ss-2xl h-16  absolute tablet:fixed left-0 top-0 bg-black text-white tablet:rounded-none">
           <h1 className="text-3xl">ChatBot</h1>
           <button onClick={() => { setChat([]) }} className="absolute right-5 top-6 text-sm">Clean Chat</button>
         </div>
 
-        <div className="py-16 pb-28">
+        <div className="py-16 pb-40">
 
           {!chat[0] &&
             <div className="flex flex-col items-center justify-center w-full h-[50vh]">
               <Image
                 src={robotHello}
                 alt="Profile Picture"
-                className="w-[40%] rounded-full mb-20"
+                className="w-[40%] rounded-full mb-10"
               />
 
-              <h2>Ola! Sou o ChatBot. Me faça uma pergunta.</h2>
+              <h1 className="text-lg ml-7">Ola! Sou o ChatBot</h1>
+              <h1 className="text-lg ml-7">Me faça uma pergunta</h1>
             </div>
           }
 

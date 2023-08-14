@@ -19,8 +19,7 @@ export default function NewMsg({ userImg, msgType, msg }) {
         src={msgType === "user" ? userImg : botImg}
         alt="Profile Picture"
         className="rounded-full mr-4"
-        width={50}
-        height={50}
+        width={botImg !== robotThinkingImg || msgType === "user" ? 50 : 80}
       />
 
       <div className='mobile:text-sm pl-4'>
