@@ -18,12 +18,12 @@ export default function NewMsg({ userImg, msgType, msg }) {
       <Image
         src={msgType === "user" ? userImg : botImg}
         alt="Profile Picture"
-        className="rounded-full"
-        width={80}
-        height={80}
+        className="rounded-full mr-4"
+        width={50}
+        height={50}
       />
 
-      <div className='pl-4 mobile:text-sm'>
+      <div className='mobile:text-sm pl-4'>
         {!Animation ? <span>{msg}</span> : <Typewriter
           onInit={(typewriter) => {
             typewriter.typeString("")
