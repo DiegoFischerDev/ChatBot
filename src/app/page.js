@@ -54,7 +54,10 @@ export default function Home() {
           <button onClick={() => { setChat([]) }} className="absolute right-5 top-6 text-sm">Clean Chat</button>
         </div>
 
-        <div className="pt-16 pb-40">
+        <div className="pb-40">
+
+          <div className="h-16">
+          </div>
 
           {!chat[0] &&
             <div className="flex flex-col items-center justify-center w-full h-[50vh]">
