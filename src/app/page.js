@@ -45,9 +45,9 @@ export default function Home() {
   }
 
   return (
-    <section className="bg-[url('../../public/Images/bg.jpg')] bg-cover relative w-full min-h-[100vh] flex items-center justify-center">
+    <section className="bg-[url('../../public/Images/bg.jpg')] bg-cover relative w-full min-h-[100vh] flex justify-center">
 
-      <div className="bg-white relative w-[100vw] max-w-[800px] p-5 py-5 rounded-2xl tablet:rounded-none shadow-md min-h-[90vh] tablet:min-h-[100vh] mobile:min-h-0 flex flex-col justify-between">
+      <div className="bg-white relative w-[100vw] max-w-[800px] p-5 py-5 rounded-2xl tablet:rounded-none shadow-md min-h-[90vh] tablet:min-h-[80vh] tablet:overflow-scroll flex flex-col justify-between my-16 tablet:my-0">
 
         <div className="w-full rounded-se-2xl flex items-center justify-center tablet:justify-start px-5 rounded-ss-2xl h-16  absolute tablet:fixed left-0 top-0 bg-black text-white tablet:rounded-none">
           <h1 className="text-3xl">ChatBot</h1>
@@ -64,7 +64,7 @@ export default function Home() {
               <Image
                 src={robotHello}
                 alt="Profile Picture"
-                className="w-[40%] rounded-full mb-10 -ml-7"
+                className="w-[40%] mb-10 -ml-7"
               />
 
               <h1 className="text-lg">Hello, I am ChatBot,</h1>
