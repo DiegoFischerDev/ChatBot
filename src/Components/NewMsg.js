@@ -23,7 +23,7 @@ export default function NewMsg({ userImg, msgType, msg }) {
         height={80}
       />
 
-      <div className='w-[82%] ml-4 mobile:text-sm'>
+      <div className='ml-4 mobile:text-sm'>
         {!Animation ? <span>{msg}</span> : <Typewriter
           onInit={(typewriter) => {
             typewriter.typeString("")
