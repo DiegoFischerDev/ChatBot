@@ -87,7 +87,7 @@ export default function Home() {
               alt="Profile Picture"
               className="w-[10vw] min-w-[50px] max-w-[80px] max-h-[80px] rounded-full"
             />
-            <button onClick={handleSend} className="w-[10vw] min-w-[50px] max-w-[80px] h-[10vh] max-h-[60px] bg-black text-sm text-white p-1 mt-1 rounded">Send</button>
+            <button disabled={msgInput ? false : true} onClick={handleSend} className="w-[10vw] min-w-[50px] max-w-[80px] h-[10vh] max-h-[60px] bg-black text-sm text-white p-1 mt-1 rounded">Send</button>
           </div>
         </div>
       </div>
