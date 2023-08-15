@@ -8,40 +8,52 @@ import robotHello from "../../public/Images/robotHello.gif"
 
 export default function Home() {
 
-  const chatMock = [
-    {
-      msgType: "bot",
-      msg: "Ola, sou o ChatBot. Me faça uma pergunta."
-    }
-  ]
-
   const [chat, setChat] = useState([])
   const [msgInput, setMsgInput] = useState("")
+  const [disableNewInput, setDisableNewInput] = useState(false)
 
   function handleSend() {
-    if (msgInput) {
 
-      const newChat = [...chat]
+    setDisableNewInput(true)
 
-      newChat.push({
-        msgType: "user",
-        msg: msgInput
-      })
+    const newChat = [...chat]
 
-      setChat(newChat)
-      setMsgInput("")
-      handleBotAnswer(newChat)
-    }
+    newChat.push({
+      msgType: "user",
+      msg: msgInput
+    })
+
+    setChat(newChat)
+    handleBotAnswer(newChat)
   }
 
   function handleBotAnswer(newChat) {
 
     newChat.push({
       msgType: "bot",
-      msg: "asdasdsa asd asda sdas dasd asaf asdas dasd asd afasds ad asdasd asdas asda dasasdasdsa asd asda sdas dasd asaf asdas dasd asd asd asda sdas dasd asaf asdas dasd asd afasds ad asdasd asdas asda dasasdasdsa asd asda sdas dasd asaf asdas dasd asd afasds ad asdasd asdas asda."
+      msg: ""
     })
 
     setChat(newChat)
+
+    fetch('https://apibotlegal.arsenaltecnologia.com.br/api/ask', {
+      method: 'POST',
+      body: JSON.stringify({ question: msgInput }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(result => result.json().then(jsonResult => {
+
+      setMsgInput("")
+      setDisableNewInput(false)
+      newChat.pop()
+      newChat.push({
+        msgType: "bot",
+        msg: jsonResult.chat_history[1]
+      })
+
+      setChat(newChat)
+    }));
   }
 
   return (
@@ -67,8 +79,9 @@ export default function Home() {
                 className="w-[40%] mb-10 -ml-7"
               />
 
-              <h1 className="text-lg">Hello, I am ChatBot,</h1>
-              <h1 className="text-lg">ask me a question...</h1>
+              <h1 className="text-lg">Ola,</h1>
+              <h1 className="text-lg">Me faça uma pergunta sobre a</h1>
+              <h1 className="text-lg">Constituição de Pernambuco.</h1>
             </div>
           }
 
@@ -84,14 +97,14 @@ export default function Home() {
         </div>
 
         <div className="absolute tablet:fixed bottom-0 left-0 w-full bg-gray-100 flex p-4 border-t">
-          <textarea value={msgInput} onChange={(e) => { setMsgInput(e.target.value) }} className="w-full p-3" />
+          <textarea disabled={disableNewInput} value={msgInput} onChange={(e) => { setMsgInput(e.target.value) }} className="w-full p-3" />
           <div className="ml-5 h-full flex justify-between flex-col">
             <Image
               src={userImg}
               alt="Profile Picture"
               className="w-[10vw] min-w-[50px] max-w-[80px] max-h-[80px] rounded-full"
             />
-            <button disabled={msgInput ? false : true} onClick={handleSend} className="w-[10vw] min-w-[50px] max-w-[80px] h-[4vh] max-h-[60px] bg-black text-sm text-white p-1 mt-1 rounded">Send</button>
+            <button disabled={disableNewInput || msgInput === ""} onClick={handleSend} className="w-[10vw] min-w-[50px] max-w-[80px] h-[4vh] max-h-[60px] bg-black text-sm text-white p-1 mt-1 rounded">Send</button>
           </div>
         </div>
       </div>
