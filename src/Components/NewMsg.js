@@ -8,39 +8,37 @@ import Typewriter from 'typewriter-effect'
 
 export default function NewMsg({ userImg, msgType, msg }) {
 
-  const [message, setMessage] = useState(msg)
-
-  useEffect(() => {
-    setMessage(msg)
-    console.log(msg)
-  }, [msg])
+  const [Animation, setAnimation] = useState(true)
 
   return (
-    <div className='w-[100%] min-h-[20px] p-3 rounded-md flex items-center mb-3'>
+    <div className='w-[100%] min-h-[20px] p-3 rounded-md flex flex-col mobile:text-sm'>
 
-      <div className='flex flex-col items-start mr-4 w-1/12'>
+      <div className='flex flex-col items-start mb-1'>
         <Image
-          src={(msgType === "user" && userImg) || (msgType === "bot" && message !== "" && robotOk) || (msgType === "bot" && message === "" && robotThinkingImg)}
+          src={(msgType === "user" && userImg) || (msgType === "bot" && msg !== "" && robotOk) || (msgType === "bot" && msg === "" && robotThinkingImg)}
           alt="Profile Picture"
           className="rounded-full"
           width={50}
         />
       </div>
 
-      <div className='mobile:text-sm text-gray-600 w-11/12'>
+      <div className='mobile:text-sm text-gray-600'>
 
-        {msgType === "bot" && message !== "" ? 
+        {msgType === "bot" && msg !== "" && Animation ? 
         <Typewriter
           onInit={(typewriter) => {
             typewriter.typeString("")
               .changeDelay('30')
-            typewriter.typeString(message)
+            typewriter.typeString(msg)
               .changeDelay('30')
               .start()
+              .callFunction(()=>{
+                setAnimation(false)
+              })
           }}
         /> 
         : 
-        <p>{message}</p>
+        <p>{msg}</p>
         }
 
       </div>
