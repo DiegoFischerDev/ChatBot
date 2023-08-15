@@ -18,15 +18,17 @@ export default function NewMsg({ userImg, msgType, msg }) {
   return (
     <div className='w-[100%] min-h-[20px] p-3 rounded-md flex items-center mb-3'>
 
-      <Image
-        src={(msgType === "user" && userImg) || (msgType === "bot" && message !== "" && robotOk) || (msgType === "bot" && message === "" && robotThinkingImg)}
-        alt="Profile Picture"
-        className="rounded-full max-h-[50px]"
-        width={50}
-        height={50}
-      />
+      <div className='flex flex-col items-start mr-4'>
+        <Image
+          src={(msgType === "user" && userImg) || (msgType === "bot" && message !== "" && robotOk) || (msgType === "bot" && message === "" && robotThinkingImg)}
+          alt="Profile Picture"
+          className="rounded-full max-h-[50px]"
+          width={50}
+          height={50}
+        />
+      </div>
 
-      <div className='mobile:text-sm w-[80vw] ml-4 text-gray-600'>
+      <div className='mobile:text-sm text-gray-600 max-w-[90%]'>
 
         {msgType === "bot" && message !== "" ? 
         <Typewriter
@@ -39,7 +41,7 @@ export default function NewMsg({ userImg, msgType, msg }) {
           }}
         /> 
         : 
-        <span>{message}</span>
+        <p>{message}</p>
         }
 
       </div>
