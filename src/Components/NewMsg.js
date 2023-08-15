@@ -13,7 +13,7 @@ export default function NewMsg({ userImg, msgType, msg }) {
   return (
     <div className='w-[100%] p-3 rounded-md flex flex-col mobile:text-sm customClasse relative'>
 
-      <div className='flex flex-col items-start mb-1 absolute left-0 top-0'>
+      <div className='flex flex-col items-start mb-1 absolute mobile:left-2 top-0'>
         <Image
           src={(msgType === "user" && userImg) || (msgType === "bot" && msg !== "" && robotOk) || (msgType === "bot" && msg === "" && robotThinkingImg)}
           alt="Profile Picture"
