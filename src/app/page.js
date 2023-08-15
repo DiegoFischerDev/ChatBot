@@ -45,16 +45,16 @@ export default function Home() {
   }
 
   return (
-    <section className="bg-[url('../../public/Images/bg.jpg')] bg-cover relative w-full min-h-[100vh] flex justify-center">
+    <section className="bg-gray-200 relative w-screen min-h-screen tablet:min-h-0 flex justify-center overflow-hidden">
 
-      <div className="bg-white relative w-[100vw] max-w-[800px] p-5 py-5 rounded-2xl tablet:rounded-none shadow-md tablet:overflow-scroll flex flex-col justify-between my-16 tablet:my-0">
+      <div className="bg-white relative w-screen max-w-[800px] p-5 tablet:p-0 rounded-2xl tablet:rounded-none shadow-md tablet:overflow-scroll my-16 tablet:my-0">
 
-        <div className="w-full rounded-se-2xl flex items-center justify-center tablet:justify-start px-5 rounded-ss-2xl h-16  absolute tablet:fixed left-0 top-0 bg-black text-white tablet:rounded-none">
+        <div className="w-full rounded-se-2xl flex items-center justify-center tablet:justify-start px-5 rounded-ss-2xl h-16 absolute tablet:fixed left-0 top-0 bg-black text-white tablet:rounded-none">
           <h1 className="text-3xl">ChatBot</h1>
           <button onClick={() => { setChat([]) }} className="absolute right-5 top-6 text-sm">Clean Chat</button>
         </div>
 
-        <div className="pb-40 mobile:pb-20">
+        <div className="pb-40 mobile:pb-32">
 
           <div className="h-20">
           </div>
@@ -83,7 +83,7 @@ export default function Home() {
 
         </div>
 
-        <div className="absolute tablet:fixed bottom-0 left-0 w-full bg-gray-100 flex p-4 rounded">
+        <div className="absolute tablet:fixed bottom-0 left-0 w-full bg-gray-100 flex p-4 border-t">
           <textarea value={msgInput} onChange={(e) => { setMsgInput(e.target.value) }} className="w-full p-3" />
           <div className="ml-5 h-full flex justify-between flex-col">
             <Image
@@ -91,7 +91,7 @@ export default function Home() {
               alt="Profile Picture"
               className="w-[10vw] min-w-[50px] max-w-[80px] max-h-[80px] rounded-full"
             />
-            <button disabled={msgInput ? false : true} onClick={handleSend} className="w-[10vw] min-w-[50px] max-w-[80px] h-[10vh] max-h-[60px] bg-black text-sm text-white p-1 mt-1 rounded">Send</button>
+            <button disabled={msgInput ? false : true} onClick={handleSend} className="w-[10vw] min-w-[50px] max-w-[80px] h-[4vh] max-h-[60px] bg-black text-sm text-white p-1 mt-1 rounded">Send</button>
           </div>
         </div>
       </div>
