@@ -22,7 +22,7 @@ export default function NewMsg({ userImg, msgType, msg }) {
         />
       </div>
 
-      <div className='mobile:text-sm text-gray-600'>
+      <div className='mobile:text-sm text-gray-600 ml-4'>
 
         {msgType === "bot" && msg !== "" && Animation ? 
         <Typewriter
