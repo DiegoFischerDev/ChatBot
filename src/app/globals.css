@@ -11,3 +11,7 @@ body {
   padding-left: 65px;
   min-height: 70px;
 }
+
+.customClasseImage {
+  left: 15px;
+}

@@ -14,6 +14,13 @@ export default function Home() {
   const [msgInput, setMsgInput] = useState("")
   const [disableNewInput, setDisableNewInput] = useState(false)
 
+  function handleCleanChat() {
+    setChat([])
+    setMsgInput("")
+    setApiError("")
+    setDisableNewInput(false)
+  }
+
   function handleSend() {
 
     setDisableNewInput(true)
@@ -72,7 +79,7 @@ export default function Home() {
 
         <div className="w-full rounded-se-2xl flex items-center justify-center tablet:justify-start px-5 rounded-ss-2xl h-16 absolute tablet:fixed left-0 top-0 z-50 bg-black text-white tablet:rounded-none">
           <h1 className="text-3xl">ChatBot</h1>
-          <button onClick={() => { setChat([]); setDisableNewInput(false); setMsgInput("") }} className="absolute right-5 top-6 text-sm">Clean Chat</button>
+          <button onClick={handleCleanChat} className="absolute right-5 top-6 text-sm">Clean Chat</button>
         </div>
 
         <div className="pb-40 mobile:pb-32">
