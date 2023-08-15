@@ -11,9 +11,9 @@ export default function NewMsg({ userImg, msgType, msg }) {
   const [Animation, setAnimation] = useState(true)
 
   return (
-    <div className='w-[100%] min-h-[20px] p-3 rounded-md flex flex-col mobile:text-sm'>
+    <div className='w-[100%] min-h-[70px] p-3 pr-14 rounded-md flex flex-col mobile:text-sm ml-14 relative'>
 
-      <div className='flex flex-col items-start mb-1'>
+      <div className='flex flex-col items-start mb-1 absolute -left-12'>
         <Image
           src={(msgType === "user" && userImg) || (msgType === "bot" && msg !== "" && robotOk) || (msgType === "bot" && msg === "" && robotThinkingImg)}
           alt="Profile Picture"
@@ -22,7 +22,7 @@ export default function NewMsg({ userImg, msgType, msg }) {
         />
       </div>
 
-      <div className='mobile:text-sm text-gray-600 ml-4'>
+      <div className='mobile:text-sm text-gray-600'>
 
         {msgType === "bot" && msg !== "" && Animation ? 
         <Typewriter

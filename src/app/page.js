@@ -5,10 +5,12 @@ import userImg from "../../public/Images/userImg.jpg"
 import NewMsg from "@/Components/NewMsg";
 import { useState } from "react";
 import robotHello from "../../public/Images/robotHello.gif"
+import robotDontKnow from "../../public/Images/robotDontKnow.gif"
 
 export default function Home() {
 
   const [chat, setChat] = useState([])
+  const [apiError, setApiError] = useState("")
   const [msgInput, setMsgInput] = useState("")
   const [disableNewInput, setDisableNewInput] = useState(false)
 
@@ -43,19 +45,24 @@ export default function Home() {
         "Content-Type": "application/json"
       }
     }).then(result => result.json().then(jsonResult => {
+      senAnswer(newChat, jsonResult.chat_history[1])
+    }).catch(err => setApiError(err))
+    );
+  }
 
-      if(disableNewInput){
-        setMsgInput("")
-        setDisableNewInput(false)
-        newChat.pop()
-        newChat.push({
-          msgType: "bot",
-          msg: jsonResult.chat_history[1]
-        })
-  
-        setChat(newChat)
-      }
-    }));
+  function senAnswer(newChat, answer) {
+
+    if (msgInput) {
+      setMsgInput("")
+      setDisableNewInput(false)
+      newChat.pop()
+      newChat.push({
+        msgType: "bot",
+        msg: answer
+      })
+
+      setChat(newChat)
+    }
   }
 
   return (
@@ -63,7 +70,7 @@ export default function Home() {
 
       <div className="bg-white relative w-screen max-w-[800px] p-5 tablet:p-0 rounded-2xl tablet:rounded-none shadow-md my-16 tablet:my-0">
 
-        <div className="w-full rounded-se-2xl flex items-center justify-center tablet:justify-start px-5 rounded-ss-2xl h-16 absolute tablet:fixed left-0 top-0 bg-black text-white tablet:rounded-none">
+        <div className="w-full rounded-se-2xl flex items-center justify-center tablet:justify-start px-5 rounded-ss-2xl h-16 absolute tablet:fixed left-0 top-0 z-50 bg-black text-white tablet:rounded-none">
           <h1 className="text-3xl">ChatBot</h1>
           <button onClick={() => { setChat([]); setDisableNewInput(false); setMsgInput("") }} className="absolute right-5 top-6 text-sm">Clean Chat</button>
         </div>
@@ -73,7 +80,7 @@ export default function Home() {
           <div className="h-20">
           </div>
 
-          {!chat[0] &&
+          {!chat[0] && !apiError &&
             <div className="flex flex-col items-center justify-center w-full h-[50vh]">
               <Image
                 src={robotHello}
@@ -84,6 +91,19 @@ export default function Home() {
               <h1 className="text-lg">Ola,</h1>
               <h1 className="text-lg">Me faça uma pergunta sobre a</h1>
               <h1 className="text-lg">Constituição de Pernambuco.</h1>
+            </div>
+          }
+
+          {apiError &&
+            <div className="flex flex-col items-center justify-center w-full h-[50vh]">
+              <Image
+                src={robotDontKnow}
+                alt="Profile Picture"
+                className="w-[40%] mb-10 -ml-7"
+              />
+
+              <h1 className="text-lg">Conection Error</h1>
+              <h1 className="text-lg">{apiError}</h1>
             </div>
           }
 
