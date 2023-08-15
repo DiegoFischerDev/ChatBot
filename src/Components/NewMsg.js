@@ -18,7 +18,7 @@ export default function NewMsg({ userImg, msgType, msg }) {
           src={(msgType === "user" && userImg) || (msgType === "bot" && msg !== "" && robotOk) || (msgType === "bot" && msg === "" && robotThinkingImg)}
           alt="Profile Picture"
           className="rounded-full"
-          width={50}
+          width={msg !== "" ? 50 : 80}
         />
       </div>
 
