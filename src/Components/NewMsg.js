@@ -18,17 +18,16 @@ export default function NewMsg({ userImg, msgType, msg }) {
   return (
     <div className='w-[100%] min-h-[20px] p-3 rounded-md flex items-center mb-3'>
 
-      <div className='flex flex-col items-start mr-4'>
+      <div className='flex flex-col items-start mr-4 w-1/12'>
         <Image
           src={(msgType === "user" && userImg) || (msgType === "bot" && message !== "" && robotOk) || (msgType === "bot" && message === "" && robotThinkingImg)}
           alt="Profile Picture"
-          className="rounded-full max-h-[50px]"
+          className="rounded-full"
           width={50}
-          height={50}
         />
       </div>
 
-      <div className='mobile:text-sm text-gray-600 max-w-[90%]'>
+      <div className='mobile:text-sm text-gray-600 w-11/12'>
 
         {msgType === "bot" && message !== "" ? 
         <Typewriter
