@@ -9,4 +9,5 @@ body {
 
 .customClasse {
   padding-left: 65px;
+  min-height: 70px;
 }
