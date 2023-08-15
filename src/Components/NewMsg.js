@@ -13,16 +13,17 @@ export default function NewMsg({ userImg, msgType, msg }) {
 
 
   return (
-    <div className='w-[100%] min-h-[20px] p-3 rounded-md flex mb-3 justify-between'>
+    <div className='w-[100%] min-h-[20px] p-3 rounded-md flex mb-3'>
 
       <Image
         src={msgType === "user" ? userImg : botImg}
         alt="Profile Picture"
-        className="rounded-full w-[10vw] max-h-[80px] mobile:h-[50px]"
-        width={botImg !== robotThinkingImg || msgType === "user" ? 50 : 80}
+        className="rounded-full max-h-[50px]"
+        width={50}
+        height={50}
       />
 
-      <div className='mobile:text-sm w-[80vw] text-gray-600'>
+      <div className='mobile:text-sm w-[80vw] ml-4 text-gray-600'>
         {!Animation ? <span>{msg}</span> : <Typewriter
           onInit={(typewriter) => {
             typewriter.typeString("")
