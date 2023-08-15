@@ -47,7 +47,7 @@ export default function Home() {
   return (
     <section className="bg-gray-200 relative w-screen min-h-screen tablet:min-h-0 flex justify-center overflow-hidden">
 
-      <div className="bg-white relative w-screen max-w-[800px] p-5 tablet:p-0 rounded-2xl tablet:rounded-none shadow-md tablet:overflow-scroll my-16 tablet:my-0">
+      <div className="bg-white relative w-screen max-w-[800px] p-5 tablet:p-0 rounded-2xl tablet:rounded-none shadow-md my-16 tablet:my-0">
 
         <div className="w-full rounded-se-2xl flex items-center justify-center tablet:justify-start px-5 rounded-ss-2xl h-16 absolute tablet:fixed left-0 top-0 bg-black text-white tablet:rounded-none">
           <h1 className="text-3xl">ChatBot</h1>
